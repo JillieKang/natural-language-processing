@@ -20,6 +20,8 @@ This repository contains Natural Language Processing (NLP) practices and Text-as
 - wordcloud
 - rvest
 - textdata
+- janeaustenr
+- gutenbergr
 
 ## Topics Covered
 
@@ -32,6 +34,10 @@ This repository contains Natural Language Processing (NLP) practices and Text-as
 - `str_view()`
 - `str_subset()`
 
+#### Data sets
+- `words`
+- `letters`
+
 #### Practices
 - Utilizing regular expressions and regex quantifiers
 - Handling NAs in text data
@@ -43,6 +49,10 @@ This repository contains Natural Language Processing (NLP) practices and Text-as
 
 ### Text Frequency Analysis
 
+#### Data sets
+- `stop_words`
+- `austen_books()`
+- `gutenberg_download()`
 
 
 ### Searching Algorithms
