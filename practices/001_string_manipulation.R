@@ -3,7 +3,7 @@
 #'   html_document:
 #'     highlight: tango
 #'     self_contained: true
-#'     theme: default
+#'     theme: journal
 #' ---
 
 #' # String Manipulation for Tidying Text Data
