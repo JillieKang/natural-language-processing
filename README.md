@@ -4,10 +4,10 @@
 # Natural Language Processing
 
 ## Overview
-This repository contains Natural Language Processing (NLP) practices and Text-as-Data analysis exercises, using *Text Mining with R* by Julia Silge and David Robinson as the primary textbook. It documents the development of NLP skills and the implementation of text-as-data analysis methods in the social science context. R files, R Markdown files, and HTML files are available in the `practices` folder. Rendered HTML files can be accessed at the bottom of this README.
+This repository contains Natural Language Processing (NLP) practices and Text-as-Data analysis exercises, using *Text Mining with R* by Julia Silge and David Robinson as the primary textbook. It documents the development of NLP skills and the implementation of text-as-data analysis methods in the social science context. R files, R Markdown files, and HTML files are available in the `practices` folder. Rendered HTML files can be accessed via the links below.
 
 ## Rendered HTML Files
-[001_string_manipulation](https://htmlpreview.github.io/?https://github.com/JillieKang/natural-language-processing/blob/main/practices/001_string_manipulation.html)
+[String Manipulation](https://htmlpreview.github.io/?https://github.com/JillieKang/natural-language-processing/blob/main/practices/001_string_manipulation.html)
 
 ## Packages Used
 - stringr
@@ -41,7 +41,7 @@ This repository contains Natural Language Processing (NLP) practices and Text-as
 - Detecting proper nouns
 - Searching words with specific characters
 
-
+### Text Frequency Analysis
 
 
 
