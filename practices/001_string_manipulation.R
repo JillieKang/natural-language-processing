@@ -1,9 +1,8 @@
 #' ---
-#' title: "Text Mining: Word Frequency Analysis"
-#' output:
-#'   html_document:
-#'     highlight: tango
-#'     self_contained: true
+#'output:
+#'  html_document:
+#'    highlight: tango
+#'    self_contained: true
 #' ---
 
 #' # String Manipulation for Tidying Text Data
@@ -189,16 +188,16 @@ str_subset(words, "^.{7,}$")
 str_subset(words, "^.......")
 
 # Invalid: nothing follows "^" before the quantifier
-str_subset(words, "^{,7}.$")
-
+# str_subset(words, "^{,7}.$")
+# 
 # Invalid: "{,m}" requires a preceding element to quantify
-str_subset(words, "^.{,7}.$")
-
+# str_subset(words, "^.{,7}.$")
+# 
 # Invalid: "{,m}" is not supported in R's default regex engine
-str_subset(words, "^.{,7}$")
-
+# str_subset(words, "^.{,7}$")
+# 
 # Invalid: same issue as above
-str_subset(words, "^.{,7}")
+# str_subset(words, "^.{,7}")
 
 # Valid syntax, but does not produce the intended result;
 # a minimum bound should be specified for clarity
