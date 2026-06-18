@@ -1,9 +1,10 @@
 #' ---
-#'  output:
+#' output:
 #'   html_document:
 #'     highlight: tango
 #'     self_contained: true
-#'     theme: cerulean
+#'     theme: null
+#'     css: null
 #' ---
 
 #' # String Manipulation for Tidying Text Data
