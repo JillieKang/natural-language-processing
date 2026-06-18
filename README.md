@@ -9,8 +9,7 @@ This repository contains Natural Language Processing (NLP) practices and Text-as
 ## Rendered HTML Files
 [String Manipulation for Tyding Text Data](https://JillieKang.github.io/natural-language-processing/practices/001_string_manipulation.html)
 
-
-[Text Mining for Word Frequency Analysis](https://htmlpreview.github.io/?https://github.com/JillieKang/natural-language-processing/blob/main/practices/002_word_frequency_analysis.html)
+[Text Mining for Word Frequency Analysis](https://htmlpreview.github.io/natural-language-processing/practices/002_word_frequency_analysis.html)
 
 ## Packages Used
 - stringr
