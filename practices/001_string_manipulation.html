@@ -872,7 +872,7 @@ str_subset(words, &quot;x$&quot;)
 # Invalid: same issue as above
 # str_subset(words, &quot;^.{,7}&quot;)
 
-# Valid syntax, but does not produce the intended result
+# Valid syntax, but does not produce the intended result;
 # a minimum bound should be specified for clarity
 str_subset(words, &quot;^.{1,7}.$&quot;)
 </code></pre>
