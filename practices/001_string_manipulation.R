@@ -1,0 +1,208 @@
+#' # String Manipulation for Tidying Text Data
+
+
+#' ## Requirements
+# library(stringr)
+# library(dplyr)
+# library(tidyr)
+# library(ggplot2)
+# library(tidyverse)
+# library(tidytext)
+# library(reshape2)
+# library(wordcloud)
+# library(rvest)
+# library(textdata)
+# library(janeaustenr)
+
+
+#' ## str_length()
+str_length(c("a", "banana", NA))
+
+#' ## str_c()
+str_c("x", "y")
+str_c("x", "y", "z")
+str_c("x", "y", "z", sep=",")
+
+#' ### Checking Regular Expressions
+str_c("Letter: ", letters)
+
+#' ### Handling NAs
+x <- c("abc", NA)
+str_c("|-", x, "-|")
+str_c("|-", str_replace_na(x), "-|")
+
+#' ### Exercises
+str_c(c("a", NA, "b"), "-d")
+
+y <- c("a", NA, "b")
+
+z <- str_c(c(y), "-d")
+z
+
+z <- str_c(c("a", NA, "b"), "-d")
+z
+
+str_c(str_replace_na(y), "-d")
+
+
+#' ### Practice: Interactive Web Page Message Implementation
+
+name <- "David"
+time <- "morning"
+str_c("Good", " ", time, ",", " ", name, "!")
+
+bday <- FALSE
+bday <- TRUE
+str_c("Good", " ", time, ",", " ", name, if (bday) " and Happy Birthday", "!")
+
+
+#' ## str_sub()
+hw <- "Hadley Wickham"
+str_sub(hw, 1, 6)
+str_sub(hw, end=6)
+str_sub(hw, 8, 14)
+str_sub(hw, 8)
+str_sub(hw, -1)
+str_sub(hw, -7)
+
+
+#' ### Exercises
+x <- c("apple", "banana", "Pear")
+str_sub(x, 1, 3)
+str_sub(x, 3)
+str_sub(x, -3)
+str_sub(x, -3, -2)
+str_sub(x, end=-3)
+
+
+#' ## str_view()
+x <- c("blur", "oasis", "libertines")
+str_view(x,"b")
+str_view(x,"^o")
+str_view(x, "s$")
+str_view(x, "[oab]")
+str_view(x, "..")
+
+#' ### Exercises
+
+# Matches any single character listed inside []
+str_view(c("abc", "def", "fghi"), "[aeiou]")
+
+# .. matches any two consecutive characters
+str_view(c("abc", "def", "fghi"), "..")
+
+# Displays only strings containing "e"
+str_view(c("abc", "def", "fghi"), "e")
+
+# Displays all strings; highlights matches for "e"
+str_view(c("abc", "def", "fghi"), "e", match=NA)
+
+# Displays only strings that do not contain "e"
+str_view(c("abc", "def", "fghi"), "e", match=FALSE)
+
+
+#' ### Regular Expression Quantifiers
+#' - `{2}`: precisely two characters
+#' - `{n,}`: n or more characters
+#' - `{,m}`: at most m characters
+#' - `{n,m}`: between n and m characters
+
+str_view(words, "e{2}")
+str_view(words, "e{1,}")
+str_view(words, "e{0,1}")
+
+#' ### Practice: Identifying Matching Patterns
+x <- c("apple", "banana", "pear")
+str_view(x, "an")
+str_view(x, "^a")
+str_view(x, "a$")
+
+y <- c("apple pie", "apple", "apple cake")
+str_view(y, "apple")
+str_view(y, "^apple$")
+
+str_view(c("abc", "def", "fghi"), "[aeiou]")
+str_view(c("abc", "def", "fghi"), "..")
+str_view(c("abc", "def", "fghi"), "..$")
+str_view(c("abc", "def", "fghi"), "e")
+
+
+#' ### Practice: Handling Quotation Marks
+Str1 <- "This is a string"
+Str2 <- 'If I want to include a "quote" inside a string, I use single quotes'
+
+
+#' ## str_subset()
+str_subset(words, "^.{3}$")
+str_subset(words, "^y")
+str_subset(words, "x$")
+str_subset(words, "^.{7}")
+
+
+#' ### Exercises
+# Matches words consisting of exactly three characters
+str_subset(words, "^.{3}$")
+
+
+#' ### Regular Expression Quantifiers
+#' - `*`: zero or more times
+#' - `+`: one or more times
+#' - `?`: zero or one time
+Regex_ex <- c("apple", "banana", "bat", "ant", "z", "aa", "ab", "a", "b", "")
+
+# Matches strings starting with "a", followed by zero or more characters
+str_subset(Regex_ex, "^a.*")
+# Matches strings starting with "a", followed by one or more characters
+str_subset(Regex_ex, "^a.+")
+# Matches strings starting with "a", followed by zero or one character
+str_subset(Regex_ex, "^a.?")
+# Matches strings starting with "a", followed by zero or one character, with no further characters
+str_subset(Regex_ex, "^a.?$")
+
+# Matches words consisting of exactly three characters
+str_subset(words, "^.{3}$")
+# Matches words beginning with at least three characters (no upper limit)
+str_subset(words, "^.{3}")
+
+# Matches words consisting of two to four characters
+str_subset(words, "^.{2,4}$")
+
+
+#' ### Practice: Detecting Proper Nouns
+# Matches strings beginning with an uppercase letter
+str_subset(words, "^[A-Z].*$")
+str_subset(words, "^[A-Z].*")
+
+# Matches words beginning with "y"
+str_subset(words, "^y")
+# Matches words beginning with "y" followed by exactly one character
+str_subset(words, "^y.")
+# Matches words beginning with "y" followed by zero or more characters
+str_subset(words, "^y.*")
+
+# Matches words ending with "x"
+str_subset(words, "x$")
+
+str_subset(words, "^.{3}$")
+str_subset(words, "^...$")
+
+#' ## Practice: Searching Words with Seven or More Characters
+str_subset(words, "^.{7}.*$")
+str_subset(words, "^.{7,}$")
+str_subset(words, "^.......")
+
+# Invalid: nothing follows "^" before the quantifier
+str_subset(words, "^{,7}.$")
+
+# Invalid: "{,m}" requires a preceding element to quantify
+str_subset(words, "^.{,7}.$")
+
+# Invalid: "{,m}" is not supported in R's default regex engine
+str_subset(words, "^.{,7}$")
+
+# Invalid: same issue as above
+str_subset(words, "^.{,7}")
+
+# Valid syntax, but does not produce the intended result;
+# a minimum bound should be specified for clarity
+str_subset(words, "^.{1,7}.$")
