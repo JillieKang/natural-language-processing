@@ -1,12 +1,3 @@
-#' ---
-#' output:
-#'   html_document:
-#'     highlight: tango
-#'     self_contained: true
-#'     theme: null
-#'     css: style.css
-#' ---
-
 #' # String Manipulation for Tidying Text Data
 
 #' ## Requirements

@@ -1,10 +1,3 @@
----
-output:
-  html_document:
-    highlight: tango
-    self_contained: true
-    theme: journal
----
 # String Manipulation for Tidying Text Data
 ## Requirements
 
