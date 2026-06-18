@@ -7,7 +7,9 @@
 This repository contains Natural Language Processing (NLP) practices and Text-as-Data analysis exercises, using *Text Mining with R* by Julia Silge and David Robinson as the primary textbook. It documents the development of NLP skills and the implementation of text-as-data analysis methods in the social science context. R files, R Markdown files, and HTML files are available in the `practices` folder. Rendered HTML files can be accessed via the links below.
 
 ## Rendered HTML Files
-[String Manipulation](https://htmlpreview.github.io/?https://github.com/JillieKang/natural-language-processing/blob/main/practices/001_string_manipulation.html)
+[String Manipulation for Tyding Text Data](https://htmlpreview.github.io/?https://github.com/JillieKang/natural-language-processing/blob/main/practices/001_string_manipulation.html)
+
+[Text Mining for Word Frequency Analysis]()
 
 ## Packages Used
 - stringr
@@ -54,34 +56,22 @@ This repository contains Natural Language Processing (NLP) practices and Text-as
 - `austen_books()`
 - `gutenberg_download()`
 
+#### Functions
+- `unnest_tokens()`
+- `anti_join()`
+- `count()`
+- `filter()`
+- `ggplot()`
 
-### Searching Algorithms
-- Binary search
-- Depth-first search (DFS)
-- Breadth-first search (BFS)
+#### Practices
+- Tidying text data
+- Tokenization and text strutcutring
+- Stop word removal
+- Word frequency count
+- Visualization of word frequency
+  
 
-### Sorting Algorithms
-- Quick sort
-- Bubble sort
-- Merge sort
 
-### Algorithm Design Techniques
-- Divide and Conquer
-- Greedy algorithms
-- Backtracking with pruning
-- Exhaustive search
-
-### Implementation Patterns
-- Frequency counting
-- Neighbor traversal
-- Grid traversal
-- Range aggregation
-- String processing
-- Simulation
-- Stack applications
-- Queue applications
-- Interval scheduling
-- Assignment optimization
 
 
 ## Skills Developed
@@ -93,12 +83,6 @@ This repository contains Natural Language Processing (NLP) practices and Text-as
 - Code optimization
 - Debugging
 
-
-## Notes on Original Problems
-
-The original problem statements are not included in this repository due to licensing restrictions. However, the corresponding problems can be found on [Samsung Software Expert Academy (SWEA)](https://swexpertacademy.com/main/main.do). 
-
-Each solution file contains a docstring at the top with the original problem title. This title can be used to search for and access the corresponding problem statement on SWEA.
 
 ## Tools
 
