@@ -1,19 +1,19 @@
 #' # Term Frequency and Inverse Document Frequency
 
 #' ## Term Frequency
-#' ### Measures how frequently a word appears in a document
-#' ### Removing stop words is necessary
-#' ### If the word "the" appears 10 times in a document containing 100 words: TF = 10/100 = 0.1
-#' ### If the word "the" appears 90 times in a document containing 100 words: TF = 90/100 = 0.9
+# Measures how frequently a word appears in a document
+# Removing stop words is necessary
+# If the word "the" appears 10 times in a document containing 100 words: TF = 10/100 = 0.1
+# If the word "the" appears 90 times in a document containing 100 words: TF = 90/100 = 0.9
 
 #' ## Inverse Document Frequency
-#' ### Assigns lower weights to common words
-#' ### Assigns higher weights to rare words
-#' ### Rare words are generally more informative
-#' ### Calculated based on the number of documents containing a given word
-#' ### Numerator: Total number of documents
-#' ### If the word "the" appears in all 6 documents: IDF = log(6/6) = 0
-#' ### If the word "Darcy" appears in only 1 out of 6 documents: IDF = log(6/1) = 1.8
+# Assigns lower weights to common words
+# Assigns higher weights to rare words
+# Rare words are generally more informative
+# Calculated based on the number of documents containing a given word
+# Numerator: Total number of documents
+# If the word "the" appears in all 6 documents: IDF = log(6/6) = 0
+# If the word "Darcy" appears in only 1 out of 6 documents: IDF = log(6/1) = 1.8
 
 #' ## TF-IDF = (Term Frequency) × (Inverse Document Frequency)
 #' ### If the word "the" appears 100 times in a document containing 10,000 words and appears in all 6 documents
@@ -25,11 +25,11 @@
 #' ### "Darcy" receives a higher TF-IDF score than "the"
 
 #' ## Zipf's Law
-#' ### Word frequency is inversely proportional to rank
-#' ### Frequency = 1 / Rank
-#' ### Zipf's Law 1: Human language favors efficiency
-#' ### Zipf's Law 2: People tend to reuse familiar words
-#' ### Zipf's Law 3: Common words are more predictable
+# Word frequency is inversely proportional to rank
+# Frequency = 1 / Rank
+# Zipf's Law 1: Human language favors efficiency
+# Zipf's Law 2: People tend to reuse familiar words
+# Zipf's Law 3: Common words are more predictable
 
 #' ## Requirements
 library(dplyr)
