@@ -12,6 +12,8 @@ This repository contains Natural Language Processing (NLP) practices and Text-as
 
 [4. TF-IDF for Keyword Extraction](https://JillieKang.github.io/natural-language-processing/practices/004_tf_and_idf.html)
 
+[5. Topic Modeling](https://JillieKang.github.io/natural-language-processing/practices/005_topic_modling.html)
+
 
 ## Packages Used
 - stringr
