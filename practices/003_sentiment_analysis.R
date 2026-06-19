@@ -19,17 +19,17 @@ library(janeaustenr)
 
 #' ## Sentiment Lexicons
 
-#' ### AFINN: With Scores e.g.) -5, -4, -3, ..., 3, 4, 5
+#' ### AFINN: With Scores (e.g., -5, -4, ..., 4, 5)
 get_sentiments("afinn") 
 
-#' ### Bing: Positive or Negative
+#' ### Bing: Binary Sentiment Labels (Positive or Negative)
 get_sentiments("bing")
 
-#' ### NRC: Various Sentiments such as Trust, Fear, Sadness, etc.
+#' ### NRC: Various Sentiments (e.g., Trust, Fear, Sadness)
 textdata::lexicon_nrc()
 
-#' #### Extracting Negative Words Only in NRC
-nrc <- get_sentiments("nrc") %>% filter(word=="negative")
+#' #### Extracting Negative Words from the NRC Lexicon
+nrc <- get_sentiments("nrc") %>% filter(sentiment =="negative")
 
 
 
@@ -50,11 +50,11 @@ tidy_books
 
 #' ### Sentiment Analysis with NRC Lexicon
 
-#' #### `filter()` for the Joy Words with NRC Lexcicon 
+#' #### Extracting Joy Words with `filter()`
 nrc_joy <- get_sentiments("nrc") %>% 
   filter(sentiment == "joy")
 
-#' #### `inner_join()` to find most common joy words in Emma  
+#' #### Finding the Most Frequent Words in Emma with `inner_join()`
 tidy_books %>%
   filter(book == "Emma") %>%
   inner_join(nrc_joy) %>%
@@ -63,7 +63,7 @@ tidy_books %>%
 
 #' ### Sentiment Analysis with Bing Lexicon
 
-#' #### Analyzing Word Counts That Contribute to Each Sentiment 
+#' #### Word Frequency by Sentiment
 bing_word_counts <- tidy_books %>%
   inner_join(get_sentiments("bing")) %>%
   count(word, sentiment, sort = TRUE) %>%
@@ -95,9 +95,9 @@ tidy_books %>%
 
 
 
-#' ### Word Cloud with Sentiments
+#' ### Comparison Word Cloud
 
-# acast() converts long form into wide form so that i can execute comparison.cloud()
+# Convert long format data into a wide format for `comparison.cloud()`
 tidy_books %>%
   inner_join(get_sentiments("bing")) %>%
   count(word, sentiment, sort = TRUE) %>%
@@ -116,17 +116,17 @@ tidy_books <- austen_books() %>%
   anti_join(stop_words)
 
 #' ### `inner_join()` with Bing Lexicon
-# There can be a warning message becuase it's in many-to-many relationship
+# A many-to-many relationship may produce a warning message
 bing_word_counts <- tidy_books %>%
   inner_join(get_sentiments("bing")) %>%
   count(word, sentiment, sort = TRUE)
 
 #' ### Visualization: Bar Chart
 
-# Sort the bars on the chart by `reorder()`
-# Delete the legend
-# Divide the chart by its sentiment
-# Add labels
+# Reorder bars using `reorder()`
+# Remove the legend
+# Separate panels by sentiment
+# Add axis labels
 bing_word_counts %>%
   group_by(sentiment) %>%
   slice_max(n, n = 10) %>% 
@@ -138,7 +138,7 @@ bing_word_counts %>%
   labs(x = "Contribution to sentiment",
        y = NULL)
 
-#' ### Visualization: Word Cloud with Sentiments
+#' ### Visualization: Comparison Word Cloud
 tidy_books %>%
   inner_join(get_sentiments("bing")) %>%
   count(word, sentiment, sort = TRUE) %>%
@@ -176,9 +176,10 @@ nrc_counts %>%
   labs(x = "Contribution to sentiment",
        y = NULL)
 
-#' ### Visualization: Word Cloud with Sentiments
+#' ### Visualization: Comparison Word Cloud
 tidy_books %>%
-  inner_join(get_sentiments("bing")) %>%
+  inner_join(get_sentiments("nrc")) %>%
+  filter(sentiment %in% c("positive", "negative")) %>%
   count(word, sentiment, sort = TRUE) %>%
   acast(word ~ sentiment, value.var = "n", fill = 0) %>%
   comparison.cloud(colors = c("peachpuff", "lavender"),

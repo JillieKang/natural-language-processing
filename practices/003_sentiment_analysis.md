@@ -20,7 +20,7 @@ library(janeaustenr)
 ```
 
 ## Sentiment Lexicons
-### AFINN: With Scores e.g.) -5, -4, -3, ..., 3, 4, 5
+### AFINN: With Scores (e.g., -5, -4, ..., 4, 5)
 
 
 ``` r
@@ -44,7 +44,7 @@ get_sentiments("afinn")
 ## # ℹ 2,467 more rows
 ```
 
-### Bing: Positive or Negative
+### Bing: Binary Sentiment Labels (Positive or Negative)
 
 
 ``` r
@@ -68,7 +68,7 @@ get_sentiments("bing")
 ## # ℹ 6,776 more rows
 ```
 
-### NRC: Various Sentiments such as Trust, Fear, Sadness, etc.
+### NRC: Various Sentiments (e.g., Trust, Fear, Sadness)
 
 
 ``` r
@@ -92,11 +92,11 @@ textdata::lexicon_nrc()
 ## # ℹ 13,862 more rows
 ```
 
-#### Extracting Negative Words Only in NRC
+#### Extracting Negative Words from the NRC Lexicon
 
 
 ``` r
-nrc <- get_sentiments("nrc") %>% filter(word=="negative")
+nrc <- get_sentiments("nrc") %>% filter(sentiment =="negative")
 ```
 
 ## Text Preprocessing
@@ -134,7 +134,7 @@ tidy_books
 
 ## Sentiment Analysis
 ### Sentiment Analysis with NRC Lexicon
-#### `filter()` for the Joy Words with NRC Lexcicon 
+#### Extracting Joy Words with `filter()`
 
 
 ``` r
@@ -142,7 +142,7 @@ nrc_joy <- get_sentiments("nrc") %>%
   filter(sentiment == "joy")
 ```
 
-#### `inner_join()` to find most common joy words in Emma  
+#### Finding the Most Frequent Words in Emma with `inner_join()`
 
 
 ``` r
@@ -174,7 +174,7 @@ tidy_books %>%
 ```
 
 ### Sentiment Analysis with Bing Lexicon
-#### Analyzing Word Counts That Contribute to Each Sentiment 
+#### Word Frequency by Sentiment
 
 
 ``` r
@@ -192,8 +192,8 @@ bing_word_counts <- tidy_books %>%
 ## Warning in inner_join(., get_sentiments("bing")): Detected an unexpected many-to-many relationship between `x` and `y`.
 ## ℹ Row 435434 of `x` matches multiple rows in `y`.
 ## ℹ Row 5051 of `y` matches multiple rows in `x`.
-## ℹ If a many-to-many relationship is expected, set `relationship = "many-to-many"` to silence
-##   this warning.
+## ℹ If a many-to-many relationship is expected, set `relationship = "many-to-many"` to
+##   silence this warning.
 ```
 
 ``` r
@@ -252,11 +252,11 @@ tidy_books %>%
 
 ![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11-1.png)
 
-### Word Cloud with Sentiments
+### Comparison Word Cloud
 
 
 ``` r
-# acast() converts long form into wide form so that i can execute comparison.cloud()
+# Convert long format data into a wide format for `comparison.cloud()`
 tidy_books %>%
   inner_join(get_sentiments("bing")) %>%
   count(word, sentiment, sort = TRUE) %>%
@@ -273,8 +273,8 @@ tidy_books %>%
 ## Warning in inner_join(., get_sentiments("bing")): Detected an unexpected many-to-many relationship between `x` and `y`.
 ## ℹ Row 435434 of `x` matches multiple rows in `y`.
 ## ℹ Row 5051 of `y` matches multiple rows in `x`.
-## ℹ If a many-to-many relationship is expected, set `relationship = "many-to-many"` to silence
-##   this warning.
+## ℹ If a many-to-many relationship is expected, set `relationship = "many-to-many"` to
+##   silence this warning.
 ```
 
 ![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12-1.png)
@@ -299,7 +299,7 @@ tidy_books <- austen_books() %>%
 
 
 ``` r
-# There can be a warning message becuase it's in many-to-many relationship
+# A many-to-many relationship may produce a warning message
 bing_word_counts <- tidy_books %>%
   inner_join(get_sentiments("bing")) %>%
   count(word, sentiment, sort = TRUE)
@@ -313,18 +313,18 @@ bing_word_counts <- tidy_books %>%
 ## Warning in inner_join(., get_sentiments("bing")): Detected an unexpected many-to-many relationship between `x` and `y`.
 ## ℹ Row 9471 of `x` matches multiple rows in `y`.
 ## ℹ Row 4099 of `y` matches multiple rows in `x`.
-## ℹ If a many-to-many relationship is expected, set `relationship = "many-to-many"` to silence
-##   this warning.
+## ℹ If a many-to-many relationship is expected, set `relationship = "many-to-many"` to
+##   silence this warning.
 ```
 
 ### Visualization: Bar Chart
 
 
 ``` r
-# Sort the bars on the chart by `reorder()`
-# Delete the legend
-# Divide the chart by its sentiment
-# Add labels
+# Reorder bars using `reorder()`
+# Remove the legend
+# Separate panels by sentiment
+# Add axis labels
 bing_word_counts %>%
   group_by(sentiment) %>%
   slice_max(n, n = 10) %>% 
@@ -339,7 +339,7 @@ bing_word_counts %>%
 
 ![plot of chunk unnamed-chunk-15](figure/unnamed-chunk-15-1.png)
 
-### Visualization: Word Cloud with Sentiments
+### Visualization: Comparison Word Cloud
 
 
 ``` r
@@ -359,8 +359,8 @@ tidy_books %>%
 ## Warning in inner_join(., get_sentiments("bing")): Detected an unexpected many-to-many relationship between `x` and `y`.
 ## ℹ Row 9471 of `x` matches multiple rows in `y`.
 ## ℹ Row 4099 of `y` matches multiple rows in `x`.
-## ℹ If a many-to-many relationship is expected, set `relationship = "many-to-many"` to silence
-##   this warning.
+## ℹ If a many-to-many relationship is expected, set `relationship = "many-to-many"` to
+##   silence this warning.
 ```
 
 ![plot of chunk unnamed-chunk-16](figure/unnamed-chunk-16-1.png)
@@ -399,8 +399,8 @@ nrc_counts <- tidy_books %>%
 ## Warning in inner_join(., get_sentiments("nrc")): Detected an unexpected many-to-many relationship between `x` and `y`.
 ## ℹ Row 13 of `x` matches multiple rows in `y`.
 ## ℹ Row 8359 of `y` matches multiple rows in `x`.
-## ℹ If a many-to-many relationship is expected, set `relationship = "many-to-many"` to silence
-##   this warning.
+## ℹ If a many-to-many relationship is expected, set `relationship = "many-to-many"` to
+##   silence this warning.
 ```
 
 ### Visualization: Bar Chart
@@ -421,12 +421,13 @@ nrc_counts %>%
 
 ![plot of chunk unnamed-chunk-19](figure/unnamed-chunk-19-1.png)
 
-### Visualization: Word Cloud with Sentiments
+### Visualization: Comparison Word Cloud
 
 
 ``` r
 tidy_books %>%
-  inner_join(get_sentiments("bing")) %>%
+  inner_join(get_sentiments("nrc")) %>%
+  filter(sentiment %in% c("positive", "negative")) %>%
   count(word, sentiment, sort = TRUE) %>%
   acast(word ~ sentiment, value.var = "n", fill = 0) %>%
   comparison.cloud(colors = c("peachpuff", "lavender"),
@@ -438,11 +439,11 @@ tidy_books %>%
 ```
 
 ```
-## Warning in inner_join(., get_sentiments("bing")): Detected an unexpected many-to-many relationship between `x` and `y`.
-## ℹ Row 9471 of `x` matches multiple rows in `y`.
-## ℹ Row 4099 of `y` matches multiple rows in `x`.
-## ℹ If a many-to-many relationship is expected, set `relationship = "many-to-many"` to silence
-##   this warning.
+## Warning in inner_join(., get_sentiments("nrc")): Detected an unexpected many-to-many relationship between `x` and `y`.
+## ℹ Row 13 of `x` matches multiple rows in `y`.
+## ℹ Row 8359 of `y` matches multiple rows in `x`.
+## ℹ If a many-to-many relationship is expected, set `relationship = "many-to-many"` to
+##   silence this warning.
 ```
 
 ![plot of chunk unnamed-chunk-20](figure/unnamed-chunk-20-1.png)
