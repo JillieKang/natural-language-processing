@@ -117,7 +117,7 @@ ap_top_terms %>%
   scale_y_reordered()
 
 
-#' ## Exercise 2: Creating a Document-Term Matrix
+#' ## Exercise 2: Topic Modeling of novels by Jane Austen
 
 #' ### Preprocessing the Text
 tidy_books <- austen_books() %>%
