@@ -20,8 +20,9 @@
 100/10000 * log(1)
 
 # If the word "Darcy" appears 200 times in a document containing 122,204 words and appears in only 1 out of 6 documents
-200/122204 * log(6)
 # "Darcy" receives a higher TF-IDF score than "the"
+200/122204 * log(6)
+
 
 #' ## Zipf's Law
 # Word frequency is inversely proportional to rank
