@@ -13,7 +13,6 @@ library(textdata)
 library(ggplot2)
 library(wordcloud)
 library(reshape2)
-library(topicmodels)
 library(janeaustenr)
 
 
