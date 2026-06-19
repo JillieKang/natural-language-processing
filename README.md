@@ -1,21 +1,23 @@
 # Natural Language Processing
 
 ## Overview
-This repository contains Natural Language Processing (NLP) practices and Text-as-Data analysis exercises, using *Text Mining with R* by Julia Silge and David Robinson as the primary textbook. It documents the development of NLP skills and the implementation of text-as-data analysis methods in the social science context. R files, R Markdown files, and HTML files are available in the `practices` folder. Rendered HTML files can be accessed via the links below.
+This repository contains Natural Language Processing (NLP) practices and Text-as-Data analysis exercises based on *Text Mining with R* by Julia Silge and David Robinson. It documents the development of NLP skills and the implementation of text-as-data analysis methods in a social science context.
+
+R scripts, R Markdown files, and HTML files are available in the `practices` folder. The rendered HTML files can be accessed via the links below.
 
 ## Rendered HTML Files
 [1. String Manipulation for Text Preprocessing](https://JillieKang.github.io/natural-language-processing/practices/001_string_manipulation.html)
 
-[2. Text Mining for Word Frequency Analysis](https://JillieKang.github.io/natural-language-processing/practices/002_word_frequency_analysis.html)
+[2. Word Frequency Analysis](https://JillieKang.github.io/natural-language-processing/practices/002_word_frequency_analysis.html)
 
 [3. Sentiment Analysis](https://JillieKang.github.io/natural-language-processing/practices/003_sentiment_analysis.html)
 
 [4. TF-IDF for Keyword Extraction](https://JillieKang.github.io/natural-language-processing/practices/004_tf_and_idf.html)
 
-[5. Topic Modeling](https://JillieKang.github.io/natural-language-processing/practices/005_topic_modling.html)
+[5. Topic Modeling](https://JillieKang.github.io/natural-language-processing/practices/005_topic_modeling.html)
 
 
-## Packages Used
+## R Packages
 - stringr
 - dplyr
 - tidyr
@@ -27,13 +29,14 @@ This repository contains Natural Language Processing (NLP) practices and Text-as
 - rvest
 - textdata
 - forcats
+- topicmodels
 - janeaustenr
 - gutenbergr
 
 
 ## Topics Covered
 
-### String Manipulation
+### 1. String Manipulation for Text Preprocessing
 
 #### Functions
 - `str_length()`
@@ -42,22 +45,20 @@ This repository contains Natural Language Processing (NLP) practices and Text-as
 - `str_view()`
 - `str_subset()`
 
-#### Data sets
+#### Data Sets
 - `words`
 - `letters`
 
 #### Key Operations
 - Utilizing regular expressions and regex quantifiers
-- Handling NAs in text data
-- Implementing interactive web page message parsing
 - Identifying matching patterns
-- Handling quotation marks in text data
 - Detecting proper nouns
-- Searching words with specific characters
+- Implementing interactive web page message parsing
+- Handling NAs in text data
 
-### Text Frequency Analysis
+### 2. Word Frequency Analysis
 
-#### Data sets
+#### Data Sets
 - `stop_words`
 - `austen_books()`
 - `gutenberg_download()`
@@ -71,12 +72,12 @@ This repository contains Natural Language Processing (NLP) practices and Text-as
 
 #### Key Operations
 - Tidying text data
-- Tokenization and text strutcutring
-- Stop word removal
-- Word frequency count
-- Visualization of word frequency
+- Tokenization and text structuring
+- Removing stop words
+- Counting word frequencies
+- Visualizing word frequencies
   
-### Sentiment Analysis
+### 3. Sentiment Analysis
 
 #### Functions
 - `inner_join()`
@@ -84,7 +85,6 @@ This repository contains Natural Language Processing (NLP) practices and Text-as
 - `facet_wrap()`
 - `comparison.cloud()`
 - `acast()`
-- `str_subset()`
 
 #### Sentiment Lexicons
 - Bing
@@ -94,43 +94,52 @@ This repository contains Natural Language Processing (NLP) practices and Text-as
 - Extracting specific sentiment categories from sentiment lexicons
 - Identifying the most frequent words associated with each sentiment
 - Visualizing sentiment-specific word frequencies using bar charts
-- Visualizing word frequencies using a basic word cloud
-- Visualizing sentiment-specific word frequencies using a comparison word cloud
+- Visualizing word frequencies using basic word clouds
+- Visualizing sentiment-specific word frequencies using comparison word clouds
 
-### TF-IDF (Term Frequency and Inverse Document Frequency)
+### 4. TF-IDF (Term Frequency and Inverse Document Frequency) for Keyword Extraction
 
 #### Functions
 - `bind_tf_idf()`
 - `fct_reorder()`
   
-#### Data sets
+#### Data Sets
 - `austen_books()`
 
 #### Key Operations
 - Calculating term frequency
 - Calculating inverse document frequency
 - Calculating TF-IDF
-- Visualizing term frequency distributions using a histogram
-- Visualizing Zipf's Law using a line chart
-- Visualizing top TF-IDF scores using a bar chart
+- Visualizing term frequency distributions using histograms
+- Visualizing Zipf's Law using line charts
+- Visualizing top TF-IDF scores using bar charts
 
+### 5. Topic Modeling
 
+#### Functions
+- `LDA()`
+- `tidy()`
+  
+#### Data Sets
+- `AssociatedPress`
+- `austen_books()`
 
+#### Key Operations
+- Fitting LDA models with different numbers of topics
+- Extracting beta values from the model
+- Identifying the top terms for each topic
+- Visualizing the top terms for each topic using bar charts
 
 ## Skills Developed
-
-- Algorithm design
-- Data structure implementation
-- Problem-solving
-- Computational thinking
-- Code optimization
-- Debugging
-
+- Natural language processing (NLP)
+- Text mining
+- Topic modeling
+- Sentiment analysis
+- Feature extraction using TF-IDF
+- Data visualization
 
 ## Tools
 - R
-- Rmd
+- R Markdown
 - knitr
-- html
-
-
+- HTML
