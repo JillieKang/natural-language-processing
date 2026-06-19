@@ -1,17 +1,14 @@
-
-
-
 # Natural Language Processing
 
 ## Overview
 This repository contains Natural Language Processing (NLP) practices and Text-as-Data analysis exercises, using *Text Mining with R* by Julia Silge and David Robinson as the primary textbook. It documents the development of NLP skills and the implementation of text-as-data analysis methods in the social science context. R files, R Markdown files, and HTML files are available in the `practices` folder. Rendered HTML files can be accessed via the links below.
 
 ## Rendered HTML Files
-[String Manipulation for Tyding Text Data](https://JillieKang.github.io/natural-language-processing/practices/001_string_manipulation.html)
+[1. String Manipulation for Tyding Text Data](https://JillieKang.github.io/natural-language-processing/practices/001_string_manipulation.html)
 
-[Text Mining for Word Frequency Analysis](https://JillieKang.github.io/natural-language-processing/practices/002_word_frequency_analysis.html)
+[2. Text Mining for Word Frequency Analysis](https://JillieKang.github.io/natural-language-processing/practices/002_word_frequency_analysis.html)
 
-[Sentiment Analysis](https://JillieKang.github.io/natural-language-processing/practices/003_sentiment_analysis.html)
+[3. Sentiment Analysis](https://JillieKang.github.io/natural-language-processing/practices/003_sentiment_analysis.html)
 
 
 ## Packages Used
@@ -43,7 +40,7 @@ This repository contains Natural Language Processing (NLP) practices and Text-as
 - `words`
 - `letters`
 
-#### Practices
+#### Key Operations
 - Utilizing regular expressions and regex quantifiers
 - Handling NAs in text data
 - Implementing interactive web page message parsing
@@ -66,13 +63,36 @@ This repository contains Natural Language Processing (NLP) practices and Text-as
 - `filter()`
 - `ggplot()`
 
-#### Practices
+#### Key Operations
 - Tidying text data
 - Tokenization and text strutcutring
 - Stop word removal
 - Word frequency count
 - Visualization of word frequency
   
+### Sentiment Analysis
+
+#### Functions
+- `inner_join()`
+- `ggplot()`
+- `facet_wrap()`
+- `comparison.cloud()`
+- `acast()`
+- `str_subset()`
+
+#### Sentiment Lexicons
+- Bing
+- NRC
+
+#### Key Operations
+- Extracting specific sentiment categories from sentiment lexicons
+- Identifying the most frequent words associated with each sentiment
+- Visualizing sentiment-specific word frequencies using bar charts
+- Visualizing word frequencies using a basic word cloud
+- Visualizing sentiment-specific word frequencies using a comparison word cloud
+
+
+
 
 
 
@@ -88,10 +108,9 @@ This repository contains Natural Language Processing (NLP) practices and Text-as
 
 
 ## Tools
+- R
+- Rmd
+- knitr
+- html
 
-- Python
-- Git
-- Visual Studio Code
-- PyCharm
-- Jupyter Notebook
-ㅠ 
+
