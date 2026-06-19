@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="generator" content="litedown 0.9">
+<title></title>
+<style type="text/css">
+body {
+  font-family: sans-serif;
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 1.5;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+body, .abstract, code, .footnotes, footer, #refs, .caption { font-size: .9em; }
+li li { font-size: .95em; }
+ul:has(li > input[type="checkbox"]) { list-style: none; padding-left: 1em; }
+*, :before, :after { box-sizing: border-box; }
+a { color: steelblue; }
+pre, img { max-width: 100%; }
+pre { white-space: pre-wrap; word-break: break-word; }
+pre code { display: block; padding: 1em; overflow-x: auto; }
+code { font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace; }
+:not(pre, th) > code, code[class], div > .caption { background: #f8f8f8; }
+pre > code:is(:not([class]), .language-plain, .language-none, .plain), .box, .figure, .table { background: inherit; border: 1px solid #eee; }
+pre > code {
+  &.message { border-color: #9eeaf9; }
+  &.warning { background: #fff3cd; border-color: #fff3cd; }
+  &.error { background: #f8d7da; border-color: #f8d7da; }
+}
+.fenced-chunk { border-left: 1px solid #666; }
+.code-fence {
+  opacity: .4;
+  border: 1px dashed #666;
+  border-left: 2px solid;
+  &:hover { opacity: inherit; }
+}
+.box, .figure, .table, table { margin: 1em auto; }
+div > .caption { padding: 1px 1em; }
+.figure { p:has(img, svg), pre:has(svg) { text-align: center; } }
+.flex-col { display: flex; justify-content: space-between; }
+table {
+  &:only-child:not(.table > *) { margin: auto; }
+  th, td { padding: 5px; font-variant-numeric: tabular-nums; }
+  thead, tfoot, tr:nth-child(even) { background: whitesmoke; }
+  thead th { border-bottom: 1px solid #ddd; }
+  &:not(.datatable-table) {
+    border-top: 1px solid #666;
+    border-bottom: 1px solid #666;
+  }
+}
+blockquote {
+  color: #666;
+  margin: 0;
+  padding: 1px 1em;
+  border-left: .5em solid #eee;
+}
+hr, .footnotes::before { border: 1px dashed #ddd; }
+.frontmatter { text-align: center; }
+#TOC {
+  a { text-decoration: none; }
+  ul { list-style: none; padding-left: 1em; }
+  & > ul { padding: 0; }
+  ul ul { border-left: 1px solid lightsteelblue; }
+}
+.body h2 { border-bottom: 1px solid #666; }
+.body .appendix, .appendix ~ h2 { border-bottom-style: dashed; }
+.main-number::after { content: "."; }
+span[class^="ref-number-"] { font-weight: bold; }
+.ref-number-fig::after, .ref-number-tab::after { content: ":"; }
+.cross-ref-chp::before { content: "Chapter "; }
+.cross-ref-sec::before { content: "Section "; }
+.cross-ref-fig::before, .ref-number-fig::before { content: "Figure "; }
+.cross-ref-tab::before, .ref-number-tab::before { content: "Table "; }
+.cross-ref-eqn::before, .MathJax_ref:has(mjx-mtext > mjx-c + mjx-c)::before { content: "Equation "; }
+.abstract, #refs {
+  &::before { display: block; margin: 1em auto; font-weight: bold; }
+}
+.abstract::before { content: "Abstract"; text-align: center; }
+#refs::before { content: "Bibliography"; font-size: 1.5em; }
+.ref-paren-open::before { content: "("; }
+.ref-paren-close::after { content: ")"; }
+.ref-semicolon::after { content: "; "; }
+.ref-and::after { content: " and "; }
+.ref-et-al::after { content: " et al."; font-style: italic; }
+.footnote-ref a {
+  &::before { content: "["; }
+  &::after { content: "]"; }
+}
+section.footnotes {
+  margin-top: 2em;
+  &::before { content: ""; display: block; max-width: 20em; }
+}
+.fade {
+  background: repeating-linear-gradient(135deg, white, white 30px, #ddd 32px, #ddd 32px);
+  opacity: 0.6;
+}
+
+@media print {
+  body { max-width: 100%; }
+  tr, img { break-inside: avoid; }
+}
+@media only screen and (min-width: 992px) {
+  body:not(.pagesjs) pre:has(.line-numbers):not(:hover) { white-space: pre; }
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xiee/utils/css/prism-xcode.min.css">
+</head>
+<body>
+<div class="frontmatter">
+</div>
+<div class="body">
+<h1 id="chp:topic-modeling">Topic Modeling</h1>
+<h2 id="sec:requirements">Requirements</h2>
+<pre><code class="language-r">library(topicmodels)
+library(tidytext)
+library(reshape2)
+library(ggplot2)
+library(dplyr)
+library(janeaustenr)
+</code></pre>
+<h2 id="sec:concepts">Concepts</h2>
+<pre><code class="language-r"># Documents: Units of analysis (e.g., articles, posts, or books)
+# Corpus: A collection of documents (e.g., the six novels by Jane Austen)
+# Topic: A latent theme shared across documents
+</code></pre>
+<h2 id="sec:steps-of-topic-modeling">Steps of Topic Modeling</h2>
+<pre><code class="language-r"># 1. Preprocessing the text
+# 2. Building the Document-Term Matrix (DTM)
+# 3. Applying the LDA algorithm
+# 4. Evaluating the model
+# 5. Interpreting the results
+</code></pre>
+<h2 id="sec:document-term-matrix-dtm">Document-Term Matrix (DTM)</h2>
+<pre><code class="language-r"># Rows represent documents
+# Columns represent terms
+# A document-term matrix is typically sparse, with most cells containing zero counts
+</code></pre>
+<h2 id="sec:latent-dirichlet-allocation-lda">Latent Dirichlet Allocation (LDA)</h2>
+<pre><code class="language-r"># Topic modeling is an unsupervised learning technique that requires an algorithm
+# Assumptions of the LDA algorithm
+# 1. Each document is a mixture of topics
+# 2. Each topic is a mixture of words
+</code></pre>
+<h2 id="sec:lda-data-k-control-list-seed-1234">LDA(data, k = …, control = list(seed = 1234))</h2>
+<pre><code class="language-r"># k refers to the number of topics
+# A suitable value of k should be selected based on domain knowledge and intuition
+
+# Beta represents the probability of a word belonging to a given topic
+# Topic 1: aaron -&gt; 1.69e-12
+# Topic 2: aaron -&gt; 3.90e-5
+# Therefore, the word &quot;aaron&quot; is more strongly associated with Topic 2
+</code></pre>
+<h2 id="sec:implementation-of-topic-modeling">Implementation of Topic Modeling</h2>
+<h3 id="sec:data-set">Data Set</h3>
+<pre><code class="language-r">data(&quot;AssociatedPress&quot;)
+AssociatedPress
+</code></pre>
+<pre><code>## &lt;&lt;DocumentTermMatrix (documents: 2246, terms: 10473)&gt;&gt;
+## Non-/sparse entries: 302031/23220327
+## Sparsity           : 99%
+## Maximal term length: 18
+## Weighting          : term frequency (tf)
+</code></pre>
+<h3 id="sec:fitting-an-lda-model-with-two-topics">Fitting an LDA Model with Two Topics</h3>
+<pre><code class="language-r"># Set a seed to ensure reproducible results
+ap_lda &lt;- LDA(AssociatedPress, k = 2, control = list(seed = 1234))
+
+ap_lda
+</code></pre>
+<pre><code>## A LDA_VEM topic model with 2 topics.
+</code></pre>
+<h3 id="sec:extracting-beta-values-from-the-two-topic-model">Extracting Beta Values from the Two-Topic Model</h3>
+<pre><code class="language-r">ap_topics &lt;- tidy(ap_lda, matrix = &quot;beta&quot;)
+
+ap_topics
+</code></pre>
+<pre><code>## # A tibble: 20,946 × 3
+##    topic term           beta
+##    &lt;int&gt; &lt;chr&gt;         &lt;dbl&gt;
+##  1     1 aaron      1.69e-12
+##  2     2 aaron      3.90e- 5
+##  3     1 abandon    2.65e- 5
+##  4     2 abandon    3.99e- 5
+##  5     1 abandoned  1.39e- 4
+##  6     2 abandoned  5.88e- 5
+##  7     1 abandoning 2.45e-33
+##  8     2 abandoning 2.34e- 5
+##  9     1 abbott     2.13e- 6
+## 10     2 abbott     2.97e- 5
+## # ℹ 20,936 more rows
+</code></pre>
+<h3 id="sec:finding-the-top-10-terms-for-each-topic_1">Finding the Top 10 Terms for Each Topic</h3>
+<pre><code class="language-r">ap_top_terms &lt;- ap_topics %&gt;%
+  group_by(topic) %&gt;%
+  slice_max(beta, n = 10) %&gt;%
+  ungroup() %&gt;%
+  arrange(topic, -beta)
+
+ap_top_terms
+</code></pre>
+<pre><code>## # A tibble: 20 × 3
+##    topic term          beta
+##    &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt;
+##  1     1 percent    0.00981
+##  2     1 million    0.00684
+##  3     1 new        0.00594
+##  4     1 year       0.00575
+##  5     1 billion    0.00427
+##  6     1 last       0.00368
+##  7     1 two        0.00360
+##  8     1 company    0.00348
+##  9     1 people     0.00345
+## 10     1 market     0.00333
+## 11     2 i          0.00705
+## 12     2 president  0.00489
+## 13     2 government 0.00452
+## 14     2 people     0.00407
+## 15     2 soviet     0.00372
+## 16     2 new        0.00370
+## 17     2 bush       0.00370
+## 18     2 two        0.00361
+## 19     2 years      0.00339
+## 20     2 states     0.00320
+</code></pre>
+<h3 id="sec:visualizing-the-top-10-terms-for-each-topic_1">Visualizing the Top 10 Terms for Each Topic</h3>
+<pre><code class="language-r">ap_top_terms %&gt;%
+  mutate(term = reorder_within(term, beta, topic)) %&gt;%
+  ggplot(aes(beta, term, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~topic, scales = &quot;free&quot;) +
+  scale_y_reordered()
+</code></pre>
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-11" /></p>
+<h2 id="sec:exercise-1-topic-modeling-of-associatedpress">Exercise 1: Topic Modeling of <code>AssociatedPress</code></h2>
+<pre><code class="language-r">data(&quot;AssociatedPress&quot;)
+AssociatedPress
+</code></pre>
+<pre><code>## &lt;&lt;DocumentTermMatrix (documents: 2246, terms: 10473)&gt;&gt;
+## Non-/sparse entries: 302031/23220327
+## Sparsity           : 99%
+## Maximal term length: 18
+## Weighting          : term frequency (tf)
+</code></pre>
+<h3 id="sec:fitting-an-lda-model-with-five-topics">Fitting an LDA Model with Five Topics</h3>
+<pre><code class="language-r">ap_lda &lt;- LDA(AssociatedPress, k = 5, control = list(seed = 1234))
+
+ap_lda
+</code></pre>
+<pre><code>## A LDA_VEM topic model with 5 topics.
+</code></pre>
+<h3 id="sec:extracting-beta-values-from-the-five-topic-model">Extracting Beta Values from the Five-Topic Model</h3>
+<pre><code class="language-r">ap_topics &lt;- tidy(ap_lda, matrix = &quot;beta&quot;)
+
+ap_topics
+</code></pre>
+<pre><code>## # A tibble: 52,365 × 3
+##    topic term        beta
+##    &lt;int&gt; &lt;chr&gt;      &lt;dbl&gt;
+##  1     1 aaron   2.80e- 5
+##  2     2 aaron   8.47e- 9
+##  3     3 aaron   3.74e-18
+##  4     4 aaron   7.37e- 5
+##  5     5 aaron   1.81e- 7
+##  6     1 abandon 2.59e- 5
+##  7     2 abandon 7.12e- 5
+##  8     3 abandon 4.75e- 5
+##  9     4 abandon 1.86e-24
+## 10     5 abandon 2.98e- 5
+## # ℹ 52,355 more rows
+</code></pre>
+<h3 id="sec:finding-the-top-10-terms-for-each-topic_2">Finding the Top 10 Terms for Each Topic</h3>
+<pre><code class="language-r"># Sort terms by descending beta values
+ap_top_terms &lt;- ap_topics %&gt;%
+  group_by(topic) %&gt;%
+  slice_max(beta, n = 10) %&gt;%
+  ungroup() %&gt;%
+  arrange(topic, -beta)
+
+ap_top_terms
+</code></pre>
+<pre><code>## # A tibble: 50 × 3
+##    topic term          beta
+##    &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt;
+##  1     1 percent    0.0198 
+##  2     1 year       0.00908
+##  3     1 million    0.00674
+##  4     1 billion    0.00628
+##  5     1 new        0.00573
+##  6     1 report     0.00518
+##  7     1 last       0.00489
+##  8     1 years      0.00409
+##  9     1 workers    0.00386
+## 10     1 department 0.00372
+## # ℹ 40 more rows
+</code></pre>
+<pre><code class="language-r"># Display additional rows
+ap_top_terms &lt;- ap_topics %&gt;%
+  group_by(topic) %&gt;%
+  slice_max(beta, n = 10) %&gt;%
+  ungroup() %&gt;%
+  arrange(topic, -beta) %&gt;%
+  print(n = 30)
+</code></pre>
+<pre><code>## # A tibble: 50 × 3
+##    topic term          beta
+##    &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt;
+##  1     1 percent    0.0198 
+##  2     1 year       0.00908
+##  3     1 million    0.00674
+##  4     1 billion    0.00628
+##  5     1 new        0.00573
+##  6     1 report     0.00518
+##  7     1 last       0.00489
+##  8     1 years      0.00409
+##  9     1 workers    0.00386
+## 10     1 department 0.00372
+## 11     2 bush       0.00866
+## 12     2 soviet     0.00850
+## 13     2 president  0.00828
+## 14     2 i          0.00658
+## 15     2 united     0.00556
+## 16     2 states     0.00549
+## 17     2 new        0.00480
+## 18     2 house      0.00438
+## 19     2 dukakis    0.00412
+## 20     2 government 0.00374
+## 21     3 million    0.0129 
+## 22     3 new        0.00900
+## 23     3 company    0.00850
+## 24     3 market     0.00821
+## 25     3 stock      0.00792
+## 26     3 billion    0.00586
+## 27     3 percent    0.00579
+## 28     3 year       0.00549
+## 29     3 york       0.00547
+## 30     3 dollar     0.00528
+## # ℹ 20 more rows
+</code></pre>
+<h3 id="sec:visualizing-the-top-10-terms-for-each-topic_2">Visualizing the Top 10 Terms for Each Topic</h3>
+<pre><code class="language-r">ap_top_terms %&gt;%
+  mutate(term = reorder_within(term, beta, topic)) %&gt;%
+  ggplot(aes(beta, term, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~topic, scales = &quot;free&quot;) +
+  scale_y_reordered()
+</code></pre>
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-16" /></p>
+<h2 id="sec:exercise-2-creating-a-document-term-matrix">Exercise 2: Creating a Document-Term Matrix</h2>
+<h3 id="sec:preprocessing-the-text">Preprocessing the Text</h3>
+<pre><code class="language-r">tidy_books &lt;- austen_books() %&gt;%
+  unnest_tokens(word, text) %&gt;%
+  anti_join(stop_words) %&gt;%
+  count(book, word, sort = TRUE) %&gt;%
+  ungroup()
+</code></pre>
+<pre><code>## Joining with `by = join_by(word)`
+</code></pre>
+<h3 id="sec:creating-a-document-term-matrix">Creating a Document-Term Matrix</h3>
+<pre><code class="language-r"># cast_dtm(document, term, frequency)
+dtm &lt;- tidy_books %&gt;%
+  cast_dtm(book, word, n)
+</code></pre>
+<h3 id="sec:fitting-an-lda-model-with-four-topics">Fitting an LDA Model with Four Topics</h3>
+<pre><code class="language-r">ap_lda4 &lt;- LDA(dtm, k = 4, control = list(seed = 1234))
+</code></pre>
+<h3 id="sec:extracting-per-topic-word-probabilities-beta-values">Extracting Per-Topic Word Probabilities (Beta Values)</h3>
+<pre><code class="language-r">ap_topics4 &lt;- tidy(ap_lda4, matrix = &quot;beta&quot;)
+
+ap_topics4
+</code></pre>
+<pre><code>## # A tibble: 55,656 × 3
+##    topic term        beta
+##    &lt;int&gt; &lt;chr&gt;      &lt;dbl&gt;
+##  1     1 fanny  4.96e-  4
+##  2     2 fanny  1.57e-  4
+##  3     3 fanny  1.70e-  2
+##  4     4 fanny  5.58e-128
+##  5     1 emma   9.28e-  3
+##  6     2 emma   3.92e-  5
+##  7     3 emma   1.06e- 71
+##  8     4 emma   5.13e-190
+##  9     1 elinor 7.36e-  3
+## 10     2 elinor 1.20e-123
+## # ℹ 55,646 more rows
+</code></pre>
+<h3 id="sec:displaying-the-top-terms-for-each-topic">Displaying the Top Terms for Each Topic</h3>
+<pre><code class="language-r">ap_top_terms4 &lt;- ap_topics4 %&gt;%
+  group_by(topic) %&gt;%
+  slice_max(beta, n = 10) %&gt;%
+  ungroup() %&gt;%
+  arrange(topic, -beta)
+
+ap_top_terms4
+</code></pre>
+<pre><code>## # A tibble: 40 × 3
+##    topic term         beta
+##    &lt;int&gt; &lt;chr&gt;       &lt;dbl&gt;
+##  1     1 miss      0.00975
+##  2     1 emma      0.00928
+##  3     1 elinor    0.00736
+##  4     1 time      0.00624
+##  5     1 marianne  0.00581
+##  6     1 harriet   0.00492
+##  7     1 weston    0.00459
+##  8     1 dear      0.00431
+##  9     1 knightley 0.00420
+## 10     1 day       0.00397
+## # ℹ 30 more rows
+</code></pre>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js" defer></script>
+</body>
+</html>
