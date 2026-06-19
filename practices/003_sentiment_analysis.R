@@ -28,12 +28,12 @@ get_sentiments("bing")
 #' ### NRC: Various Sentiments such as Trust, Fear, Sadness, etc.
 textdata::lexicon_nrc()
 
-#' #### Collecting Negative Words Only in NRC
+#' #### Extracting Negative Words Only in NRC
 nrc <- get_sentiments("nrc") %>% filter(word=="negative")
 
 
 
-#' ## Tidying Text First
+#' ## Text Preprocessing
 tidy_books <- austen_books() %>%
   group_by(book) %>%
   mutate(
@@ -46,23 +46,24 @@ tidy_books <- austen_books() %>%
 tidy_books
 
 
+#' ## Sentiment Analysis
 
-#' ## Sentiment Analysis with NRC
+#' ### Sentiment Analysis with NRC Lexicon
 
-#' ### `filter()` for the Joy Words with NRC Lexcicon 
+#' #### `filter()` for the Joy Words with NRC Lexcicon 
 nrc_joy <- get_sentiments("nrc") %>% 
   filter(sentiment == "joy")
 
-#' ### `inner_join()` to find most common joy words in Emma  
+#' #### `inner_join()` to find most common joy words in Emma  
 tidy_books %>%
   filter(book == "Emma") %>%
   inner_join(nrc_joy) %>%
   count(word, sort = TRUE)
 
 
-#' ## Sentiment Analysis with Bing
+#' ### Sentiment Analysis with Bing Lexicon
 
-#' ### Analyzing Word Counts That Contribute to Each Sentiment 
+#' #### Analyzing Word Counts That Contribute to Each Sentiment 
 bing_word_counts <- tidy_books %>%
   inner_join(get_sentiments("bing")) %>%
   count(word, sentiment, sort = TRUE) %>%
@@ -70,7 +71,9 @@ bing_word_counts <- tidy_books %>%
 
 bing_word_counts
 
-#' ## Visualization: Bar Chart
+#' ## Visualization:
+
+#' ### Bar Chart
 
 bing_word_counts %>%
   group_by(sentiment) %>%
@@ -84,7 +87,7 @@ bing_word_counts %>%
        y = NULL)
 
 
-#' ## Visualization: Basic Word Cloud
+#' ### Basic Word Cloud
 tidy_books %>%
   anti_join(stop_words) %>%
   count(word) %>%
@@ -92,7 +95,7 @@ tidy_books %>%
 
 
 
-#' ## Visualization: Word Cloud with Sentiments
+#' ### Word Cloud with Sentiments
 
 # acast() converts long form into wide form so that i can execute comparison.cloud()
 tidy_books %>%
@@ -105,7 +108,7 @@ tidy_books %>%
 
 #' ## Exercise: Sentiment Analysis of Emma by Jane Austen Corpus with Bing Lexicon
 
-#' ### Tidying Text Data
+#' ### Text Preprocessing
 data("stop_words")
 tidy_books <- austen_books() %>%
   filter(book == "Emma") %>%
@@ -147,6 +150,13 @@ tidy_books %>%
 
 
 #' ## Exercise: Sentiment Analysis of Emma by Jane Austen Corpus with NRC Lexicon
+
+#' ### Text Preprocessing
+data("stop_words")
+tidy_books <- austen_books() %>%
+  filter(book == "Emma") %>%
+  unnest_tokens(word, text) %>%
+  anti_join(stop_words)
 
 #' ### `inner_join()` with NRC Lexicon 
 nrc_counts <- tidy_books %>%

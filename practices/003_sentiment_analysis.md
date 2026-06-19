@@ -92,14 +92,14 @@ textdata::lexicon_nrc()
 ## # ℹ 13,862 more rows
 ```
 
-#### Collecting Negative Words Only in NRC
+#### Extracting Negative Words Only in NRC
 
 
 ``` r
 nrc <- get_sentiments("nrc") %>% filter(word=="negative")
 ```
 
-## Tidying Text First
+## Text Preprocessing
 
 
 ``` r
@@ -132,8 +132,9 @@ tidy_books
 ## # ℹ 725,045 more rows
 ```
 
-## Sentiment Analysis with NRC
-### `filter()` for the Joy Words with NRC Lexcicon 
+## Sentiment Analysis
+### Sentiment Analysis with NRC Lexicon
+#### `filter()` for the Joy Words with NRC Lexcicon 
 
 
 ``` r
@@ -141,7 +142,7 @@ nrc_joy <- get_sentiments("nrc") %>%
   filter(sentiment == "joy")
 ```
 
-### `inner_join()` to find most common joy words in Emma  
+#### `inner_join()` to find most common joy words in Emma  
 
 
 ``` r
@@ -172,8 +173,8 @@ tidy_books %>%
 ## # ℹ 291 more rows
 ```
 
-## Sentiment Analysis with Bing
-### Analyzing Word Counts That Contribute to Each Sentiment 
+### Sentiment Analysis with Bing Lexicon
+#### Analyzing Word Counts That Contribute to Each Sentiment 
 
 
 ``` r
@@ -191,7 +192,8 @@ bing_word_counts <- tidy_books %>%
 ## Warning in inner_join(., get_sentiments("bing")): Detected an unexpected many-to-many relationship between `x` and `y`.
 ## ℹ Row 435434 of `x` matches multiple rows in `y`.
 ## ℹ Row 5051 of `y` matches multiple rows in `x`.
-## ℹ If a many-to-many relationship is expected, set `relationship = "many-to-many"` to silence this warning.
+## ℹ If a many-to-many relationship is expected, set `relationship = "many-to-many"` to silence
+##   this warning.
 ```
 
 ``` r
@@ -215,7 +217,8 @@ bing_word_counts
 ## # ℹ 2,575 more rows
 ```
 
-## Visualization: Bar Chart
+## Visualization:
+### Bar Chart
 
 
 ``` r
@@ -233,7 +236,7 @@ bing_word_counts %>%
 
 ![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10-1.png)
 
-## Visualization: Basic Word Cloud
+### Basic Word Cloud
 
 
 ``` r
@@ -249,7 +252,7 @@ tidy_books %>%
 
 ![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11-1.png)
 
-## Visualization: Word Cloud with Sentiments
+### Word Cloud with Sentiments
 
 
 ``` r
@@ -270,13 +273,14 @@ tidy_books %>%
 ## Warning in inner_join(., get_sentiments("bing")): Detected an unexpected many-to-many relationship between `x` and `y`.
 ## ℹ Row 435434 of `x` matches multiple rows in `y`.
 ## ℹ Row 5051 of `y` matches multiple rows in `x`.
-## ℹ If a many-to-many relationship is expected, set `relationship = "many-to-many"` to silence this warning.
+## ℹ If a many-to-many relationship is expected, set `relationship = "many-to-many"` to silence
+##   this warning.
 ```
 
 ![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12-1.png)
 
 ## Exercise: Sentiment Analysis of Emma by Jane Austen Corpus with Bing Lexicon
-### Tidying Text Data
+### Text Preprocessing
 
 
 ``` r
@@ -309,7 +313,8 @@ bing_word_counts <- tidy_books %>%
 ## Warning in inner_join(., get_sentiments("bing")): Detected an unexpected many-to-many relationship between `x` and `y`.
 ## ℹ Row 9471 of `x` matches multiple rows in `y`.
 ## ℹ Row 4099 of `y` matches multiple rows in `x`.
-## ℹ If a many-to-many relationship is expected, set `relationship = "many-to-many"` to silence this warning.
+## ℹ If a many-to-many relationship is expected, set `relationship = "many-to-many"` to silence
+##   this warning.
 ```
 
 ### Visualization: Bar Chart
@@ -354,12 +359,28 @@ tidy_books %>%
 ## Warning in inner_join(., get_sentiments("bing")): Detected an unexpected many-to-many relationship between `x` and `y`.
 ## ℹ Row 9471 of `x` matches multiple rows in `y`.
 ## ℹ Row 4099 of `y` matches multiple rows in `x`.
-## ℹ If a many-to-many relationship is expected, set `relationship = "many-to-many"` to silence this warning.
+## ℹ If a many-to-many relationship is expected, set `relationship = "many-to-many"` to silence
+##   this warning.
 ```
 
 ![plot of chunk unnamed-chunk-16](figure/unnamed-chunk-16-1.png)
 
 ## Exercise: Sentiment Analysis of Emma by Jane Austen Corpus with NRC Lexicon
+### Text Preprocessing
+
+
+``` r
+data("stop_words")
+tidy_books <- austen_books() %>%
+  filter(book == "Emma") %>%
+  unnest_tokens(word, text) %>%
+  anti_join(stop_words)
+```
+
+```
+## Joining with `by = join_by(word)`
+```
+
 ### `inner_join()` with NRC Lexicon 
 
 
@@ -378,7 +399,8 @@ nrc_counts <- tidy_books %>%
 ## Warning in inner_join(., get_sentiments("nrc")): Detected an unexpected many-to-many relationship between `x` and `y`.
 ## ℹ Row 13 of `x` matches multiple rows in `y`.
 ## ℹ Row 8359 of `y` matches multiple rows in `x`.
-## ℹ If a many-to-many relationship is expected, set `relationship = "many-to-many"` to silence this warning.
+## ℹ If a many-to-many relationship is expected, set `relationship = "many-to-many"` to silence
+##   this warning.
 ```
 
 ### Visualization: Bar Chart
@@ -397,7 +419,7 @@ nrc_counts %>%
        y = NULL)
 ```
 
-![plot of chunk unnamed-chunk-18](figure/unnamed-chunk-18-1.png)
+![plot of chunk unnamed-chunk-19](figure/unnamed-chunk-19-1.png)
 
 ### Visualization: Word Cloud with Sentiments
 
@@ -419,8 +441,9 @@ tidy_books %>%
 ## Warning in inner_join(., get_sentiments("bing")): Detected an unexpected many-to-many relationship between `x` and `y`.
 ## ℹ Row 9471 of `x` matches multiple rows in `y`.
 ## ℹ Row 4099 of `y` matches multiple rows in `x`.
-## ℹ If a many-to-many relationship is expected, set `relationship = "many-to-many"` to silence this warning.
+## ℹ If a many-to-many relationship is expected, set `relationship = "many-to-many"` to silence
+##   this warning.
 ```
 
-![plot of chunk unnamed-chunk-19](figure/unnamed-chunk-19-1.png)
+![plot of chunk unnamed-chunk-20](figure/unnamed-chunk-20-1.png)
 
