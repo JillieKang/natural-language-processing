@@ -16,13 +16,12 @@
 # If the word "Darcy" appears in only 1 out of 6 documents: IDF = log(6/1) = 1.8
 
 #' ## TF-IDF = (Term Frequency) × (Inverse Document Frequency)
-#' ### If the word "the" appears 100 times in a document containing 10,000 words and appears in all 6 documents
+# If the word "the" appears 100 times in a document containing 10,000 words and appears in all 6 documents
 100/10000 * log(1)
 
-#' ### If the word "Darcy" appears 200 times in a document containing 122,204 words and appears in only 1 out of 6 documents
+# If the word "Darcy" appears 200 times in a document containing 122,204 words and appears in only 1 out of 6 documents
 200/122204 * log(6)
-
-#' ### "Darcy" receives a higher TF-IDF score than "the"
+# "Darcy" receives a higher TF-IDF score than "the"
 
 #' ## Zipf's Law
 # Word frequency is inversely proportional to rank
