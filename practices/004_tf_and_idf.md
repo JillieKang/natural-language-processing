@@ -51,7 +51,7 @@
 
 ``` r
 # Word frequency is inversely proportional to rank
-# Frequency = 1 / Rank
+# Frequency = (1 / Rank)
 # Zipf's Law 1: Human language favors efficiency
 # Zipf's Law 2: People tend to reuse familiar words
 # Zipf's Law 3: Common words are more predictable
