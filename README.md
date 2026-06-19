@@ -11,7 +11,7 @@ This repository contains Natural Language Processing (NLP) practices and Text-as
 
 [Text Mining for Word Frequency Analysis](https://JillieKang.github.io/natural-language-processing/practices/002_word_frequency_analysis.html)
 
-
+[Sentiment Analysis](https://JillieKang.github.io/natural-language-processingpractices/003_sentiment_analysis.html)
 
 
 ## Packages Used
