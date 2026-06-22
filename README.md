@@ -1,9 +1,19 @@
 # Natural Language Processing
 
 ## Overview
-This repository contains Natural Language Processing (NLP) practices and Text-as-Data analysis exercises based on *Text Mining with R* by Julia Silge and David Robinson. It documents the development of NLP skills and the implementation of text-as-data analysis methods in a social science context.
+This repository contains Natural Language Processing (NLP) practices, Text-as-Data analysis exercises, and independent research projects conducted in a social science context.
+
+The repository is primarily based on *Text Mining with R* by Julia Silge and David Robinson and documents the development of NLP skills, text mining techniques, and computational approaches to analysing social phenomena using textual data.
+
+The repository is organised into two main sections:
+
+- **practices**: Exercises and methodological implementations based on textbook materials and tutorials
+- **projects**: Independent text-as-data research projects applying NLP techniques to real-world social and political issues
 
 R scripts, R Markdown files, and HTML files are available in the `practices` folder. The rendered HTML files can be accessed via the links below.
+
+The `projects` folder contains complete research projects, including analytical reports and the corresponding R scripts used for data processing, text analysis, and visualisation.
+
 
 ## Practices: Rendered HTML Files
 [1. String Manipulation for Text Preprocessing](https://JillieKang.github.io/natural-language-processing/practices/001_string_manipulation.html)
