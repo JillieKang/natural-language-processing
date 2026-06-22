@@ -1,9 +1,7 @@
 # Natural Language Processing
 
 ## Overview
-This repository contains Natural Language Processing (NLP) practices, Text-as-Data analysis exercises, and independent research projects conducted in a social science context.
-
-The repository is primarily based on *Text Mining with R* by Julia Silge and David Robinson and documents the development of NLP skills, text mining techniques, and computational approaches to analysing social phenomena using textual data.
+This repository contains Natural Language Processing (NLP) practices, Text-as-Data analysis exercises, and independent research projects conducted in a social science context. The repository is primarily based on *Text Mining with R* by Julia Silge and David Robinson and documents the development of NLP skills, text mining techniques, and computational approaches to analysing social phenomena using text-as-data.
 
 The repository is organised into two main sections:
 
@@ -153,12 +151,11 @@ The `projects` folder contains complete research projects, including analytical 
 - Identifying the top terms for each topic
 - Visualizing the top terms for each topic using bar charts
 
-## Projects
 
+## Projects
 The `projects` folder contains independent NLP and text-as-data analysis projects applying computational social science methods to real-world cases.
 
 ### Text Mining Analysis of Democratic Party Supporters' Opinions toward Kwon Young-guk(민주노동당 대선후보 권영국에 대한 더불어민주당 지지층의 여론 분석)
-
 This project examines how supporters of the Democratic Party discussed Kwon Young-guk, the Democratic Labor Party's presidential candidate, during the South Korean presidential election in 2025. The project applies text-as-data methods to online political discourse and includes:
 
 * A project report in PDF format
@@ -170,19 +167,16 @@ Both the report and the corresponding R scripts are available in the `projects` 
 ## Functions
 
 ### String Processing
-
 - `str_replace_all()`
 - `str_squish()`
 - `str_count()`
 
 ### Text Mining
-
 - `unnest_tokens()`
 - `extractNoun()`
 - `count()`
 
 ### Data Manipulation
-
 - `filter()`
 - `mutate()`
 - `group_by()`
@@ -192,7 +186,6 @@ Both the report and the corresponding R scripts are available in the `projects` 
 - `split()`
 
 ### Data Visualisation
-
 - `ggplot()`
 - `geom_col()`
 - `geom_text()`
@@ -202,37 +195,31 @@ Both the report and the corresponding R scripts are available in the `projects` 
 ## Key Operations
 
 ### Data Integration
-
 - Merging post and comment datasets using post IDs
 - Constructing unified text corpora for analysis
 
 ### Text Preprocessing
-
 - Removing non-Korean characters
 - Handling missing values
 - Normalising whitespace
 - Converting datasets into tibble format
 
 ### Morphological Analysis
-
 - Extracting nouns from titles and post contents
 - Tokenising comments
 - Calculating word frequencies
 
 ### Text Cleaning
-
 - Removing irrelevant tokens
 - Standardising alternative spellings and abbreviations
 - Consolidating references to political parties and politicians
 
 ### Exploratory Text Analysis
-
 - Identifying high-frequency keywords
 - Comparing discussion topics across titles, posts, and comments
 - Examining mentions of major political figures
 
 ### Visualisation
-
 - Frequency bar charts
 - Comparative frequency plots
 - Word clouds
