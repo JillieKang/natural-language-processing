@@ -5,6 +5,21 @@ This repository contains Natural Language Processing (NLP) practices and Text-as
 
 R scripts, R Markdown files, and HTML files are available in the `practices` folder. The rendered HTML files can be accessed via the links below.
 
+## Projects
+
+The `projects` folder contains independent NLP and text-as-data analysis projects applying computational social science methods to real-world cases.
+
+### Public Opinion Analysis of Democratic Party Supporters toward Kwon Young-guk, Democratic Labor Party Presidential Candidate (민주노동당 대선후보 권영국에 대한 더불어민주당 지지층의 여론 분석)
+
+This project examines how supporters of the Democratic Party discussed Kwon Young-guk, the Democratic Labor Party's presidential candidate, during the South Korean presidential election in 2025. The project applies text-as-data methods to online political discourse and includes:
+
+* A project report in PDF format
+* Source code used for data collection, preprocessing, and analysis
+* Data visualizations and analytical outputs
+
+Both the report and the corresponding R scripts are available in the `projects` folder.
+
+
 ## Rendered HTML Files
 [1. String Manipulation for Text Preprocessing](https://JillieKang.github.io/natural-language-processing/practices/001_string_manipulation.html)
 
