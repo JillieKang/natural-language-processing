@@ -5,22 +5,7 @@ This repository contains Natural Language Processing (NLP) practices and Text-as
 
 R scripts, R Markdown files, and HTML files are available in the `practices` folder. The rendered HTML files can be accessed via the links below.
 
-## Projects
-
-The `projects` folder contains independent NLP and text-as-data analysis projects applying computational social science methods to real-world cases.
-
-### Public Opinion Analysis of Democratic Party Supporters toward Kwon Young-guk, Democratic Labor Party Presidential Candidate (민주노동당 대선후보 권영국에 대한 더불어민주당 지지층의 여론 분석)
-
-This project examines how supporters of the Democratic Party discussed Kwon Young-guk, the Democratic Labor Party's presidential candidate, during the South Korean presidential election in 2025. The project applies text-as-data methods to online political discourse and includes:
-
-* A project report in PDF format
-* Source code used for data collection, preprocessing, and analysis
-* Data visualizations and analytical outputs
-
-Both the report and the corresponding R scripts are available in the `projects` folder.
-
-
-## Rendered HTML Files
+## Practices: Rendered HTML Files
 [1. String Manipulation for Text Preprocessing](https://JillieKang.github.io/natural-language-processing/practices/001_string_manipulation.html)
 
 [2. Word Frequency Analysis](https://JillieKang.github.io/natural-language-processing/practices/002_word_frequency_analysis.html)
@@ -31,6 +16,19 @@ Both the report and the corresponding R scripts are available in the `projects` 
 
 [5. Topic Modeling](https://JillieKang.github.io/natural-language-processing/practices/005_topic_modeling.html)
 
+## Skills Developed
+- Natural language processing (NLP)
+- Text mining
+- Topic modeling
+- Sentiment analysis
+- Feature extraction using TF-IDF
+- Data visualization
+
+## Tools
+- R
+- R Markdown
+- knitr
+- HTML
 
 ## R Packages
 - stringr
@@ -45,11 +43,11 @@ Both the report and the corresponding R scripts are available in the `projects` 
 - textdata
 - forcats
 - topicmodels
+- Rselenium
 - janeaustenr
 - gutenbergr
 
-
-## Topics Covered
+## Practices: Topics Covered
 
 ### 1. String Manipulation for Text Preprocessing
 
@@ -145,16 +143,87 @@ Both the report and the corresponding R scripts are available in the `projects` 
 - Identifying the top terms for each topic
 - Visualizing the top terms for each topic using bar charts
 
-## Skills Developed
-- Natural language processing (NLP)
-- Text mining
-- Topic modeling
-- Sentiment analysis
-- Feature extraction using TF-IDF
-- Data visualization
+## Projects
 
-## Tools
-- R
-- R Markdown
-- knitr
-- HTML
+The `projects` folder contains independent NLP and text-as-data analysis projects applying computational social science methods to real-world cases.
+
+### Text Mining Analysis of Democratic Party Supporters' Opinions toward Kwon Young-guk(민주노동당 대선후보 권영국에 대한 더불어민주당 지지층의 여론 분석)
+
+This project examines how supporters of the Democratic Party discussed Kwon Young-guk, the Democratic Labor Party's presidential candidate, during the South Korean presidential election in 2025. The project applies text-as-data methods to online political discourse and includes:
+
+* A project report in PDF format
+* Source code used for data collection, preprocessing, and analysis
+* Data visualizations and analytical outputs
+
+Both the report and the corresponding R scripts are available in the `projects` folder.
+
+## Functions
+
+### String Processing
+
+- `str_replace_all()`
+- `str_squish()`
+- `str_count()`
+
+### Text Mining
+
+- `unnest_tokens()`
+- `extractNoun()`
+- `count()`
+
+### Data Manipulation
+
+- `filter()`
+- `mutate()`
+- `group_by()`
+- `summarise()`
+- `arrange()`
+- `bind_rows()`
+- `split()`
+
+### Data Visualisation
+
+- `ggplot()`
+- `geom_col()`
+- `geom_text()`
+- `geom_text_wordcloud()`
+- `coord_flip()`
+
+## Key Operations
+
+### Data Integration
+
+- Merging post and comment datasets using post IDs
+- Constructing unified text corpora for analysis
+
+### Text Preprocessing
+
+- Removing non-Korean characters
+- Handling missing values
+- Normalising whitespace
+- Converting datasets into tibble format
+
+### Morphological Analysis
+
+- Extracting nouns from titles and post contents
+- Tokenising comments
+- Calculating word frequencies
+
+### Text Cleaning
+
+- Removing irrelevant tokens
+- Standardising alternative spellings and abbreviations
+- Consolidating references to political parties and politicians
+
+### Exploratory Text Analysis
+
+- Identifying high-frequency keywords
+- Comparing discussion topics across titles, posts, and comments
+- Examining mentions of major political figures
+
+### Visualisation
+
+- Frequency bar charts
+- Comparative frequency plots
+- Word clouds
+  
